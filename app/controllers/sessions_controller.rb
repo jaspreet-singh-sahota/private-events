@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   # GET /sessions/new
   def new
-    @session = Users.new
+    
   end
 
 
@@ -13,17 +13,11 @@ class SessionsController < ApplicationController
   # POST /userss
   # POST /userss.json
   def create
-    @session = User.new(session_params)
-
-    respond_to do |format|
-      if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render :show, status: :created, location: @session }
-      else
-        format.html { render :new }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
-    end
+    byebug
+    @user = User.find_by(email:(params[:session][:email]))
+    session[:user_id] = @user.id
+    flash[notice] = "Logged in Successfully"
+    @user
   end
 
 
@@ -45,6 +39,6 @@ class SessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def session_params
-      params.fetch(:session, {})
+      params.permit(:email)
     end
 end
