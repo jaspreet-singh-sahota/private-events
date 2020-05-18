@@ -1,0 +1,15 @@
+current directory: /home/jaspreet/Desktop/rails/private-events/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.1/ext/websocket-driver
+/home/jaspreet/.rbenv/versions/2.6.5/bin/ruby -I /home/jaspreet/.rbenv/versions/2.6.5/lib/ruby/2.6.0 -r ./siteconf20200518-18698-mvij5w.rb extconf.rb
+creating Makefile
+
+current directory: /home/jaspreet/Desktop/rails/private-events/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.1/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/jaspreet/Desktop/rails/private-events/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.1/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/jaspreet/Desktop/rails/private-events/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.1/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20200518-18698-dz2o86
