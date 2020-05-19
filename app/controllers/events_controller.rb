@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     redirect_to login_path if session[:user_id] == nil
-    @current_user = User.find_by(session[:user_id])
+    @current_user = User.find(session[:user_id])
     @event = @current_user.events.build(event_params)
     respond_to do |format|
       if @event.save
@@ -70,6 +70,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :description, :event_date, :creator_id)
+      params.require(:event).permit(:title, :description, :event_date)
     end
 end
