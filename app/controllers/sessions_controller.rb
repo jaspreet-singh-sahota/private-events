@@ -6,11 +6,11 @@ before_action :set_session, only: [:destroy]
   end
 
   def create
-    byebug
     @user = User.find_by(email:(params[:session][:email]))
     if @user != nil
       session[:user_id] = @user.id
-      flash[:notice] = "Logged in Successfully"    
+      flash[:notice] = "Logged in Successfully"
+      render 'events#index'
     else
       flash.now[:notice] = "Worng Email Id"
       render 'new'
