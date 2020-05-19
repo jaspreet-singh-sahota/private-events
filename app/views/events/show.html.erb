@@ -14,9 +14,21 @@
   <strong>Event date:</strong>
   <%= @event.event_date %>
 </p>
+<% if @not_registered and current_user %>
+  <h3>
+  <a class="btn btn-primary btn-lg" href=<%= register_event_path(id: params[:id]) %> role="button">Register Now</a> 
+  </h3>
+<% elsif current_user %>
+  <h4>
+  You already Registered for this event
+  </h4>
+
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+<h2 class="my-4"> Event Attendees </h2>
 
 <ul>
   <% @users.each do |user| %>

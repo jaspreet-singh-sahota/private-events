@@ -11,22 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+    <%= form.label :title, class: "sr-only"%>
+    <%= form.text_field :title,class: "form-control my-2", placeholder: "Event Title" %>
+  
+    <%= form.label :description, class: "sr-only" %>
+    <%= form.text_area :description,class: "form-control my-2", placeholder: "Event Description" %>
 
-  <div class="field">
-    <%= form.label :event_date %>
-    <%= form.datetime_select :event_date %>
-  </div>
+    <%= form.label :event_date, "Event date :", class: " px-2" %>
+    <%= form.datetime_select :event_date, class: "form-control my-2" %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= form.submit "Create Event", class: "btn my-4 btn-lg btn-primary btn-block" %>
+
 <% end %>

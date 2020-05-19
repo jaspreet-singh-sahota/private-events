@@ -11,18 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <%= form.label :name , class: "sr-only" %>
+    <%= form.text_field :name, class: "form-control my-2", placeholder: "Choose Username" %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+
+    <%= form.label :email , class: "sr-only my-2" %>
+    <%= form.text_field :email, class: "form-control my-2", placeholder: "Enter your email address" %>
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Sign up", class: "btn my-4 btn-lg btn-primary btn-block"%>
   </div>
 <% end %>

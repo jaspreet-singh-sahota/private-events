@@ -1,5 +1,5 @@
-<h1>New Session</h1>
-
+<div class= "my-4 form-signin">
+<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 <%= render 'form', session: @session %>
-
-<%= link_to 'Back', sessions_path %>
+<h4 class="h4 mb-3 font-weight-normal">New to Portal ? <a class="btn btn-outline-primary my-2 my-sm-0" href= <%= new_user_path %> >  Sign up </a> </h4>
+</div>

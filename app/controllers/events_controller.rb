@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: %i[show edit update destroy]
+  before_action :set_user, only: [:register_event, :new]
 
   # GET /events
   # GET /events.json
@@ -9,11 +10,22 @@ class EventsController < ApplicationController
     @upcoming_events = @events.upcoming_events
   end
 
+  def register_event
+    @event = Event.find(params[:id])
+    if @event.attendees << @current_user
+      redirect_to root_path, notice: 'Registered for the event successfully.'
+    else
+      redirect_to root_path, alert: 'Unable to Register for the event.'
+    end
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
     @users = @event.attendees
+    return unless current_user
+    @not_registered = true if @users.where(id: @current_user.id)[0].nil?
   end
 
   # GET /events/new
@@ -72,8 +84,19 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
+    def set_user
+      if current_user
+        current_user
+      else
+        redirect_to login_path, alert: 'Login to access My Events'
+      end
+    end
+
+
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:title, :description, :event_date)
     end
+
+
 end
