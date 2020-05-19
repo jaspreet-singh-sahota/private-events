@@ -5,16 +5,17 @@
         
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Events Management</a>
+        <a class="blog-header-logo text-dark" href= <%= root_path %> >Events Management</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#" aria-label="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         </a>
-        <% if session[:user_id] %>
-          <a class="btn btn-sm btn-outline-secondary" href="#"> <%= current_user.name %> </a>
+        <% if current_user %>
+          <strong class="allign-middle p-3 text-primary"> <a href=  <%= my_events_path %> > <%= current_user.name %> </a> </strong>
+          <a class="btn btn-outline-primary my-2 my-sm-0" href=  <%= logout_path %>> Sign out </a>
         <% else %>
-          <a class="btn btn-sm btn-outline-secondary" href= <%= login_path %> > Sign in </a>
+          <a class="btn btn-outline-primary my-2 my-sm-0" href= <%= login_path %> > Sign in </a>
         <% end %>
         
         

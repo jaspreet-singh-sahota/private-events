@@ -1,0 +1,12 @@
+
+      <div class="col-md-3">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary"> <%= event_status %> </strong>
+          <h3 class="mb-1"><%= event.title %></h3>
+          <div class="mb-0 text-muted"> <%= event.event_date.to_formatted_s(:short) %> </div>
+          <p class="card-text mb-auto"><%= event.description %> </p>
+          <a href= <%= event_path(event.id) %> class="stretched-link">Open Event details</a>
+        </div>
+      </div>
+    </div>

@@ -4,12 +4,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    @events = @user.events
-    #@attended_events = @user.attended_events("") # db call
-    @attend_events = @user.attended_events
-    @upcoming_events = @attend_events.upcoming_events
-    @prev_events = @attend_events.previous_events
+    if @user
+      @created_events = @user.events
+      #@attended_events = @user.attended_events("") # db call
+      @attend_events = @user.attended_events
+      @upcoming_events = @attend_events.upcoming_events
+      @prev_events = @attend_events.previous_events
+    else
+      redirect_to login_path, alert: 'Login to access My Events'
+    end
   end
 
   # GET /users/new
@@ -39,7 +42,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
     end
 
     # Only allow a list of trusted parameters through.

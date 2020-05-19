@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-before_action :set_session, only: [:destroy]
 
   def new
 
@@ -9,10 +8,10 @@ before_action :set_session, only: [:destroy]
     @user = User.find_by(email:(params[:session][:email]))
     if @user != nil
       session[:user_id] = @user.id
-      flash[:notice] = "Logged in Successfully"
-      redirect_to 'events#index'
+      flash[:notice] = "User logged in successfully"
+      redirect_to root_path
     else
-      flash.now[:notice] = "Worng Email Id"
+      flash.now[:alert] = "Worng Email Id"
       render 'new'
     end
   end
@@ -20,18 +19,14 @@ before_action :set_session, only: [:destroy]
 
 
   def destroy
-    @session.destroy
+    session[:user_id] = nil
     respond_to do |format|
-      format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'User logged out successfully ' }
       format.json { head :no_content }
     end
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_session
-    @session = Session.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def session_params
