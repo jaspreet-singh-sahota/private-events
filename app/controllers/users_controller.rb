@@ -7,8 +7,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @events = @user.events
     #@attended_events = @user.attended_events("") # db call
-    @upcoming_events = upcoming_events
-    @prev_events = previous_events
+    @attend_events = @user.attended_events
+    @upcoming_events = @attend_events.upcoming_events
+    @prev_events = @attend_events.previous_events
   end
 
   # GET /users/new
@@ -44,15 +45,6 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :email)
-    end
-
-    # upcoming events  and past event
-    def upcoming_events
-      @upcoming_events = @user.attended_events.where('event_date >= ?', Time.zone.now)
-    end
-
-    def previous_events
-      @prev_events = @user.attended_events.where('event_date < ?', Time.zone.now)
     end
 
 end
