@@ -2,69 +2,53 @@
 
 <%= link_to 'New Event', new_event_path %>
 
-<h1>previous Events</h1>
+<h2>previous Events</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Creator Name</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Event date</th>
-      <th>Actions</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row mb-2">
+  <% @previous_events.each do |event| %>
 
-  <tbody>
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">Completed</strong>
+          <h3 class="mb-0"><%= event.title %></h3>
+          <div class="mb-1 text-muted"> <%= event.event_date %> </div>
+          <p class="card-text mb-auto"><%= event.description %> </p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-    <% @previous_events.each do |event| %>
 
-      <tr>
-        <td><%= event.creator.name %></td>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.event_date %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 
-<h1>Upcomings Events</h1>
+<h2>Upcomings Events</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Creator Name</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Event date</th>
-      <th>Actions</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row mb-2">
+  <% @upcoming_events.each do |event| %>
 
-  <tbody>
-
-    <% @upcoming_events.each do |event| %>
-
-      <tr>
-        <td><%= event.creator.name %></td>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.event_date %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">Completed</strong>
+          <h3 class="mb-0"><%= event.title %></h3>
+          <div class="mb-1 text-muted"> <%= event.event_date %> </div>
+          <p class="card-text mb-auto"><%= event.description %> </p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
 
