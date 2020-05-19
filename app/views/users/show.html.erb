@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<!-- List of events user created -->
 <%= render 'list_events' %>
+
+
+<!-- List of events user Attended -->
+<%= render 'attended_events' %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
