@@ -10,7 +10,7 @@ before_action :set_session, only: [:destroy]
     if @user != nil
       session[:user_id] = @user.id
       flash[:notice] = "Logged in Successfully"
-      render 'events#index'
+      redirect_to 'events#index'
     else
       flash.now[:notice] = "Worng Email Id"
       render 'new'
