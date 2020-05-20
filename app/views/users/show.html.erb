@@ -19,12 +19,14 @@
 <h3>Upcoming Events</h3>
 
 <div class="row my-4">
-<%= render partial: 'show_events', collection: @upcoming_events, as: :event, locals: {event_status: "Upcoming"} %>
+<%= render partial: 'show_events', collection: @upcoming_events, 
+                as: :event, locals: {event_status: "Upcoming"} %>
 </div>
 
 
 <h3>Previous Events</h3>
 <div class="row my-4">
-<%= render partial: 'show_events', collection: @prev_events, as: :event, locals: {event_status: "Completed"} %>
+<%= render partial: 'show_events', collection: @prev_events, 
+                as: :event, locals: {event_status: "Completed"} %>
 </div>
 
