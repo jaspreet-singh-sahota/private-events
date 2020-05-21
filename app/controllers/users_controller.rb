@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users/1
-  # GET /users/1.json
   def show
       @created_events = @current_user.events
       #@attended_events = @user.attended_events("") # db call
@@ -11,14 +9,10 @@ class UsersController < ApplicationController
       @prev_events = @attend_events.previous_events
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
 
@@ -33,17 +27,9 @@ class UsersController < ApplicationController
     end
   end
 
- 
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      if current_user
-        current_user
-      else
-        redirect_to login_path, alert: 'Login to access My Events'
-      end
-    end
 
     # Only allow a list of trusted parameters through.
     def user_params
