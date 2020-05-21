@@ -22,9 +22,9 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @users = @event.attendees
-    if sign_in?
-      @not_registered = true if @users.where(id: @current_user.id)[0].nil?
-    end
+    return unless sign_in?
+
+    @not_registered = true if @users.where(id: @current_user.id)[0].nil?
   end
 
   # GET /events/new
@@ -33,13 +33,12 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /events
   # POST /events.json
   def create
-    redirect_to login_path if session[:user_id] == nil
+    redirect_to login_path if session[:user_id].nil?
     @current_user = User.find(session[:user_id])
     @event = @current_user.events.build(event_params)
     respond_to do |format|
@@ -78,15 +77,14 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def event_params
-      params.require(:event).permit(:title, :description, :event_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-
+  # Only allow a list of trusted parameters through.
+  def event_params
+    params.require(:event).permit(:title, :description, :event_date)
+  end
 end
