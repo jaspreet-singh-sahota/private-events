@@ -2,8 +2,6 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show register_event edit update destroy]
   before_action :require_user, only: %i[register_event new edit]
 
-  # GET /events
-  # GET /events.json
   def index
     @events = Event.all
     @previous_events = @events.previous_events
@@ -18,8 +16,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
     @users = @event.attendees
     return unless sign_in?
@@ -27,16 +23,14 @@ class EventsController < ApplicationController
     @not_registered = true if @users.where(id: @current_user.id)[0].nil?
   end
 
-  # GET /events/new
   def new
     @event = Event.new
   end
 
-  # GET /events/1/edit
-  def edit; end
+  def edit
+    redirect_to root_path if current_user.id != @event.creator_id
+  end
 
-  # POST /events
-  # POST /events.json
   def create
     redirect_to login_path if session[:user_id].nil?
     @current_user = User.find(session[:user_id])
@@ -52,8 +46,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -66,8 +58,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     @event.destroy
     respond_to do |format|
@@ -78,12 +68,10 @@ class EventsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:title, :description, :event_date)
   end

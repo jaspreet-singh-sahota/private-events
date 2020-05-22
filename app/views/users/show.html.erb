@@ -1,18 +1,10 @@
 
-<!-- List of events user created 
-
--->
-
 <h2>My Events</h2>
 
 <div class="row my-4">
 <%= render partial: 'show_events', collection: @created_events, as: :event, locals: {event_status: "My Events"} %>
 </div>
 
-
-
-
-<!-- List of events user Attended -->
 <h2 class="mb-5">List of Events Registered</h2>
 
 

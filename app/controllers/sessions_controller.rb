@@ -20,15 +20,11 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'User logged out successfully ' }
-      format.json { head :no_content }
-    end
+    redirect_to root_path, notice: 'User logged out successfully '
   end
 
   private
 
-  # Only allow a list of trusted parameters through.
   def session_params
     params.permit(:email)
   end
