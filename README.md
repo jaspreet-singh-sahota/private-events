@@ -26,6 +26,7 @@
   </a>
 
   <h3 align="center"> Private Events</h3>
+  
 
   <p align="center">
      Rails - Private Events (Association Project)
@@ -52,6 +53,12 @@
 ## About The Project
 
 Private Event is a lightweight event management system. After signing up, a user can create and join events. Only users that have created the event or are attending the event can invite others.
+
+## Live Version
+
+ - [Heroku Link](https://morning-earth-52328.herokuapp.com/)
+
+
 
 ![Event_management](https://user-images.githubusercontent.com/55361440/82560346-e2be3900-9b8e-11ea-9d9b-3b3f901033b8.png)
 
