@@ -1,0 +1,24 @@
+
+<h2>My Events</h2>
+
+<div class="row my-4">
+<%= render partial: 'show_events', collection: @created_events, as: :event, locals: {event_status: "My Events"} %>
+</div>
+
+<h2 class="mb-5">List of Events Registered</h2>
+
+
+<h3>Upcoming Events</h3>
+
+<div class="row my-4">
+<%= render partial: 'show_events', collection: @upcoming_events, 
+                as: :event, locals: {event_status: "Upcoming"} %>
+</div>
+
+
+<h3>Previous Events</h3>
+<div class="row my-4">
+<%= render partial: 'show_events', collection: @prev_events, 
+                as: :event, locals: {event_status: "Completed"} %>
+</div>
+

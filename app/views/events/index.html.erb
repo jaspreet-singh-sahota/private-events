@@ -1,0 +1,22 @@
+
+
+<div class="jumbotron p-4 my-3 p-md-5 text-white rounded bg-secondary">
+  <div class="col-md-8 px-0">
+    <h1 class="display-4">Title of a longer featured blog post</h1>
+    <p class="lead my-4">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+    <a class="btn btn-primary btn-lg" href=<%= new_event_path %> role="button">Create Event</a>
+  </div>
+</div>
+
+<h2>Upcoming Events</h2>
+
+<div class="row my-4">
+<%= render partial: 'show_events', collection: @upcoming_events, as: :event, locals: {event_status: "Upcoming"} %>
+</div>
+
+
+<h2>Previous Events</h2>
+<div class="row my-4">
+<%= render partial: 'show_events', collection: @previous_events, as: :event, locals: {event_status: "Completed"} %>
+</div>
+

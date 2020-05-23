@@ -1,0 +1,29 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h4>
+
+        <% user.errors.full_messages.each do |message| %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong> <%= message %> </strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        <% end %>
+    </div>
+  <% end %>
+
+    <%= form.label :name , class: "sr-only" %>
+    <%= form.text_field :name, class: "form-control my-2", placeholder: "Choose Username" %>
+
+
+    <%= form.label :email , class: "sr-only my-2" %>
+    <%= form.text_field :email, class: "form-control my-2", placeholder: "Enter your email address" %>
+
+
+  <div class="actions">
+    <%= form.submit "Sign up", class: "btn my-4 btn-lg btn-primary btn-block"%>
+  </div>
+<% end %>

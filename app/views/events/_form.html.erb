@@ -1,0 +1,26 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= form.label :title, class: "sr-only"%>
+    <%= form.text_field :title,class: "form-control my-2", placeholder: "Event Title" %>
+  
+    <%= form.label :description, class: "sr-only" %>
+    <%= form.text_area :description,class: "form-control my-2", placeholder: "Event Description" %>
+
+    <%= form.label :event_date, "Event date :", class: " px-2" %>
+    <%= form.datetime_select :event_date, class: "form-control my-2" %>
+
+    <%= form.submit class: "btn my-4 btn-lg btn-primary btn-block" %>
+
+<% end %>
