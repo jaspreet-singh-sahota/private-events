@@ -58,13 +58,8 @@ Private Event is a lightweight event management system. After signing up, a user
 
  - [Heroku Link](https://morning-earth-52328.herokuapp.com/)
 
-
-
-![Event_management](https://user-images.githubusercontent.com/55361440/82560346-e2be3900-9b8e-11ea-9d9b-3b3f901033b8.png)
-
-
 <!-- BUILD WITH -->
-## Built With
+ ## Built With
 This project was built using these technologies.
 * Ruby on rails
 * Rubocop
@@ -77,13 +72,23 @@ To clone the repository, navigate to it's containing directory, and run:
 
 #### Clone the repository and follow the steps to run the bot.
 
-- $ `git clone https://github.com/jaspreet-singh-sahota/private-events`
-- $ bundle install
-- $ rails s
+```bash
+  git clone https://github.com/jaspreet-singh-sahota/private-events
+  cd private-events
+  bundle install
+  rails db:migrate
+  rails s
+```
 
-This should install all rails gems, and start a local server where vai rails s.
+This should install all rails gems, and start a local server where via `rails s`.
 
-Then you can you the command `rails s` in your terminial to active live application.
+Now you can open `http://localhost:3000/` in your browser.
+
+
+![Event_management](https://user-images.githubusercontent.com/55361440/82560346-e2be3900-9b8e-11ea-9d9b-3b3f901033b8.png)
+
+
+
 
 <!-- HOW IT WORKS -->
 
@@ -103,8 +108,9 @@ Then you can you the command `rails s` in your terminial to active live applicat
 - [LinkedIn](https://www.linkedin.com/in/jaspreet-singh-a28286146/)
 - [GitHub](https://github.com/jaspreet-singh-sahota)
 - [E-mail](jaspreetsinghjassi01@gmail.com)
+- [Portfolio](https://jaspreet-singh-portfolio.netlify.app/)
 
-👤 **Jaspreet Singh** 
+👤 **Karthick** 
     
 - [GitHub](https://github.com/karthi07)
 
